@@ -1,6 +1,6 @@
 package com.academia;
 
-public class Main {
+public class SpringBootMain {
     public static void main(String[] args) {
         System.out.println("Hello world!");
     }
