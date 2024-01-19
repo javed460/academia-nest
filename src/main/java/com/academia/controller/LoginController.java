@@ -1,6 +1,7 @@
 package com.academia.controller;
 
 import com.academia.model.Users;
+import com.academia.service.UsersService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
