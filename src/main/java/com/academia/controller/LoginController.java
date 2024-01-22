@@ -16,6 +16,9 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import static com.academia.util.PopupUtil.showLoginErrorPopup;
+import static com.academia.util.PopupUtil.showSignUpErrorPopup;
+
 
 @Controller
 @RequiredArgsConstructor
