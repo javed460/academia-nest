@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import org.springframework.stereotype.Controller;
@@ -63,17 +64,37 @@ public class MainDashboardController implements Initializable {
     private Button main_minimize;
 
     @FXML
-    void addStudent(ActionEvent event) {
+    private TextField addStuClass_field;
 
+    @FXML
+    private TextField addStuDob_field;
+
+    @FXML
+    private Button saveStuButton;
+
+    @FXML
+    private TextField addStuname_field;
+
+    @FXML
+    private AnchorPane addStudentPane;
+
+    @FXML
+    void addStudent(ActionEvent event) {
+        centerPane.setVisible(false);
+        addStudentPane.setVisible(true);
     }
 
     @FXML
     void dashboard(ActionEvent event) {
-
+        centerPane.setVisible(true);
+        addStudentPane.setVisible(false);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        centerPane.setVisible(true);
+        addStudentPane.setVisible(false);
+
         ObservableList<Students> listStudents = FXCollections.observableArrayList();
 
         studentsService = JavaFxApplication.getContext().getBean(StudentsService.class);
@@ -99,6 +120,10 @@ public class MainDashboardController implements Initializable {
 
     @FXML
     void minimize(ActionEvent event) {
+
+    }
+
+    public void saveStuButton(ActionEvent actionEvent) {
 
     }
 }
