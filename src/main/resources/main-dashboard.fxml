@@ -12,6 +12,7 @@
 <?import javafx.scene.text.Text?>
 
 
+<?import javafx.scene.control.TextField?>
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.academia.controller.MainDashboardController">
     <children>
         <AnchorPane prefHeight="200.0" prefWidth="200.0">
@@ -68,19 +69,44 @@
                         </AnchorPane>
                     </left>
                     <center>
-                        <AnchorPane fx:id="centerPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                             <children>
-                                <TableView fx:id="studentDetails_tableView" layoutX="14.0" layoutY="14.0" prefHeight="517.0" prefWidth="689.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                    <columns>
-                                        <TableColumn fx:id="stuId" prefWidth="75.0" text="Student Id" />
-                                        <TableColumn fx:id="stuName" prefWidth="75.0" text="Student Name" />
-                                        <TableColumn fx:id="stuClass" prefWidth="75.0" text="Class" />
-                                        <TableColumn fx:id="stuDOB" prefWidth="75.0" text="DOB" />
-                                    </columns>
-                                    <columnResizePolicy>
-                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                                    </columnResizePolicy>
-                                </TableView>
+                                <AnchorPane fx:id="centerPane" prefHeight="517.0" prefWidth="689.0" BorderPane.alignment="CENTER">
+                                    <TableView fx:id="studentDetails_tableView" layoutX="14.0" layoutY="14.0" prefHeight="517.0" prefWidth="689.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                        <columns>
+                                            <TableColumn fx:id="stuId" prefWidth="75.0" text="Student Id" />
+                                            <TableColumn fx:id="stuName" prefWidth="75.0" text="Student Name" />
+                                            <TableColumn fx:id="stuClass" prefWidth="75.0" text="Class" />
+                                            <TableColumn fx:id="stuDOB" prefWidth="75.0" text="DOB" />
+                                        </columns>
+                                        <columnResizePolicy>
+                                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                        </columnResizePolicy>
+                                    </TableView>
+                                </AnchorPane>
+                                <AnchorPane fx:id="addStudentPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                    <children>
+                                        <Label layoutX="22.0" layoutY="48.0" text="Student Name:">
+                                            <font>
+                                                <Font name="Tahoma" size="14.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField fx:id="addStuname_field" layoutX="123.0" layoutY="45.0" />
+                                        <Label layoutX="77.0" layoutY="91.0" text="Class:">
+                                            <font>
+                                                <Font name="Tahoma" size="14.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField fx:id="addStuClass_field" layoutX="123.0" layoutY="88.0" />
+                                        <TextField fx:id="addStuDob_field" layoutX="123.0" layoutY="130.0" />
+                                        <Label layoutX="81.0" layoutY="134.0" text="DOB:">
+                                            <font>
+                                                <Font name="Tahoma" size="14.0" />
+                                            </font>
+                                        </Label>
+                                        <Button fx:id="saveStuButton" layoutX="123.0" layoutY="211.0" mnemonicParsing="false" onAction="#saveStuButton" text="ADD" />
+                                    </children>
+                                </AnchorPane>
                             </children>
                         </AnchorPane>
                     </center>
