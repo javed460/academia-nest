@@ -1,8 +1,8 @@
 package com.academia.controller;
 
 import com.academia.JavaFxApplication;
-import com.academia.model.Students;
-import com.academia.service.StudentsService;
+import com.academia.model.Student;
+import com.academia.service.StudentService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,9 +23,8 @@ import java.util.ResourceBundle;
 @Controller
 public class MainDashboardController implements Initializable {
 
-    private StudentsService studentsService;
-    private ObservableList<Students> studentsDataDisplayList;
-
+    private StudentService studentsService;
+    private ObservableList<Student> studentsDataDisplayList;
 
     @FXML
     private Button addStu_btn;
@@ -37,22 +36,19 @@ public class MainDashboardController implements Initializable {
     private Button dashboard_btn;
 
     @FXML
-    private AnchorPane leftPane;
+    public TableView<Student> studentDetails_tableView;
 
     @FXML
-    public TableView<Students> studentDetails_tableView;
+    private TableColumn<Student, String> stuClass;
 
     @FXML
-    private TableColumn<Students, String> stuClass;
+    private TableColumn<Student, String> stuDOB;
 
     @FXML
-    private TableColumn<Students, String> stuDOB;
+    private TableColumn<Student, Integer> stuId;
 
     @FXML
-    private TableColumn<Students, Integer> stuId;
-
-    @FXML
-    private TableColumn<Students, String> stuName;
+    private TableColumn<Student, String> stuName;
 
     @FXML
     private AnchorPane topHorizontalPane;
@@ -68,9 +64,6 @@ public class MainDashboardController implements Initializable {
 
     @FXML
     private TextField addStuDob_field;
-
-    @FXML
-    private Button saveStuButton;
 
     @FXML
     private TextField addStuname_field;
@@ -95,10 +88,10 @@ public class MainDashboardController implements Initializable {
         centerPane.setVisible(true);
         addStudentPane.setVisible(false);
 
-        ObservableList<Students> listStudents = FXCollections.observableArrayList();
+        ObservableList<Student> listStudents = FXCollections.observableArrayList();
 
-        studentsService = JavaFxApplication.getContext().getBean(StudentsService.class);
-        List<Students> allStudents = studentsService.getAllStudents();
+        studentsService = JavaFxApplication.getContext().getBean(StudentService.class);
+        List<Student> allStudents = studentsService.getAllStudents();
         listStudents.addAll(allStudents);
         this.studentsDataDisplayList = listStudents;
 
@@ -124,6 +117,19 @@ public class MainDashboardController implements Initializable {
     }
 
     public void saveStuButton(ActionEvent actionEvent) {
+        Student student = new Student();
+        student.setStudentName(addStuname_field.getText());
+        student.setStudentClass(addStuClass_field.getText());
+        student.setDob(addStuDob_field.getText());
 
+        studentsService.saveOrUpdateStudent(student);
+        clearAddStudentFormFields();
+        studentsDataDisplayList.add(student);
+    }
+
+    private void clearAddStudentFormFields() {
+        addStuname_field.setText("");
+        addStuClass_field.setText("");
+        addStuDob_field.setText("");
     }
 }
