@@ -1,4 +1,5 @@
 # academia-nest
+It's a Student Management System Desktop application.
 
 # Tech stack
 Java 17 
