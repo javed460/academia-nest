@@ -24,7 +24,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import static com.academia.util.PopupUtil.showLoginErrorPopup;
-import static com.academia.util.PopupUtil.showSignUpErrorPopup;
+import static com.academia.util.PopupUtil.showAllFieldsNeededErrorPopup;
 
 
 @Controller
@@ -111,7 +111,7 @@ public class LoginController implements Initializable {
         }
 
         if (user.username().isEmpty() || user.password().isEmpty()) {
-            showSignUpErrorPopup();
+            showAllFieldsNeededErrorPopup();
             return;
         }
 

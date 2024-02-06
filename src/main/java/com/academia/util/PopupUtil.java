@@ -14,7 +14,7 @@ public final class PopupUtil {
         alert.showAndWait();
     }
 
-    public static void showSignUpErrorPopup() {
+    public static void showAllFieldsNeededErrorPopup() {
         Alert alert = new Alert(ERROR);
         alert.setTitle("Error Message");
         alert.setHeaderText(null);
