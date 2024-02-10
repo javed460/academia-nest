@@ -20,6 +20,8 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import static com.academia.util.PopupUtil.showAllFieldsNeededErrorPopup;
+
 @Controller
 public class MainDashboardController implements Initializable {
 
@@ -117,6 +119,11 @@ public class MainDashboardController implements Initializable {
     }
 
     public void saveStuButton(ActionEvent actionEvent) {
+        if (anyAddStudentFieldEmpty()) {
+            showAllFieldsNeededErrorPopup();
+            return;
+        }
+
         Student student = new Student();
         student.setStudentName(addStuname_field.getText());
         student.setStudentClass(addStuClass_field.getText());
@@ -125,6 +132,12 @@ public class MainDashboardController implements Initializable {
         studentsService.saveOrUpdateStudent(student);
         clearAddStudentFormFields();
         studentsDataDisplayList.add(student);
+    }
+
+    private boolean anyAddStudentFieldEmpty() {
+        return addStuname_field.getText().isEmpty()
+                || addStuClass_field.getText().isEmpty()
+                || addStuDob_field.getText().isEmpty();
     }
 
     private void clearAddStudentFormFields() {
